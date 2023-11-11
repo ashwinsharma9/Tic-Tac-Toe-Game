@@ -9,16 +9,17 @@ var div7 = document.querySelector(".div7");
 var div8 = document.querySelector(".div8");
 var div9 = document.querySelector(".div9");
 
+
 var clearButton = document.querySelector(".btn-clear")
 var divs = document.querySelectorAll(".div");
-var currentPlayer = "X"; 
+var currentPlayer = "X";
 
 function check(event) {
     if (event.target.innerText === "") {
         event.target.innerText = currentPlayer;
 
         // Toggle between "X" and "O" for the next turn
-        if(currentPlayer==="X") {
+        if (currentPlayer === "X") {
             currentPlayer = "O"
         } else {
             currentPlayer = "X"
@@ -26,37 +27,24 @@ function check(event) {
     }
 
     //winner combinations
+    function winner(para1, para2, para3) {
+        if (
+            (para1.innerText === para2.innerText) &&
+            (para2.innerText === para3.innerText) &&
+            (para3.innerText === "X" || para3.innerText === "O")) {
 
-    if (
-
-        (div1.innerText === "X" && div2.innerText === "X" && div3.innerText === "X" ||
-            div1.innerText === "O" && div2.innerText === "O" && div3.innerText === "O") ||
-
-        (div4.innerText === "X" && div5.innerText === "X" && div6.innerText === "X" ||
-            div4.innerText === "O" && div5.innerText === "O" && div6.innerText === "O") ||
-
-        (div7.innerText === "X" && div8.innerText === "X" && div9.innerText === "X" ||
-            div7.innerText === "O" && div8.innerText === "O" && div9.innerText === "O") ||
-
-        (div1.innerText === "X" && div4.innerText === "X" && div7.innerText === "X" ||
-            div1.innerText === "O" && div4.innerText === "O" && div7.innerText === "O") ||
-
-        (div2.innerText === "X" && div5.innerText === "X" && div8.innerText === "X" ||
-            div2.innerText === "O" && div5.innerText === "O" && div8.innerText === "O") ||
-
-        (div3.innerText === "X" && div6.innerText === "X" && div9.innerText === "X" ||
-            div3.innerText === "O" && div6.innerText === "O" && div9.innerText === "O") ||
-
-        (div1.innerText === "X" && div5.innerText === "X" && div9.innerText === "X" ||
-            div1.innerText === "O" && div5.innerText === "O" && div9.innerText === "O") ||
-
-        (div3.innerText === "X" && div5.innerText === "X" && div7.innerText === "X" ||
-            div3.innerText === "O" && div5.innerText === "O" && div7.innerText === "O")
-    )
-
-    {
-        alert("Winner!");
+            alert("You win!")
+        }
     }
+
+    winner(div1, div2, div3);
+    winner(div4, div5, div6);
+    winner(div7, div8, div9);
+    winner(div1, div4, div7);
+    winner(div2, div5, div8);
+    winner(div3, div6, div9);
+    winner(div1, div5, div9);
+    winner(div3, div5, div7);
 
 }
 
